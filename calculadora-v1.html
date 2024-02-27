@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+     <style>
+
+        *{
+            box-sizing: border-box;
+        }
+        
+        body{
+            font-family: sans-serif;
+            text-align: center;
+        }
+      
+        h1{
+            font-size: 3em;
+        }
+        
+        h2,h3{
+            margin-top:2em;
+        }
+
+        .calculadora{
+            margin:4em;
+            padding: 3em;
+            border:1px solid gray;
+        }
+
+        .numeros, .resultado-operacion{
+            margin:0.5em 2em 2em 2em;
+            font-size: 2em;
+        }
+
+        
+
+        button{
+            margin:0.3em;
+            padding: 1em;
+            font-size: 1.4em;
+            font-weight: bold;
+            background: rgb(226, 214, 191);
+            border-radius: 15px;
+            cursor: pointer;
+        }
+       
+     </style>
+       
+
+  
+</head>
+<body>
+  
+
+    
+    <section class="calculadora">
+        <h1>Calculadora</h1>
+        <h2>Insertar números</h2>
+
+        <!-- botón para insertar números -->
+        <button onclick="insertarNumeros();">Insertar numeros</button>
+
+        <!-- caja que muestra los números -->
+        <div class="numeros">Números operacion...</div>
+
+        <h2>Elegir una operación</h2>
+        <!-- botones para elegir la operación -->
+        <button onclick="operacion('suma','+');">Suma</button>
+        <button onclick="operacion('resta','-');">Resta</button>
+
+        <button onclick="operacion('multiplicacion','*');">Multiplicación</button>
+
+        <button onclick="operacion('division','/');">División</button>
+
+        <h3>RESULTADO:</h3>
+        <!-- caja para mostrar resultado -->
+        <div class="resultado-operacion"></div>
+    </section>
+
+    <script>
+
+      // variables
+      var num1=null; //será variable global para ser utilizada en varias funciones
+      var num2=null; //será variable global para ser utilizada en varias funciones
+ 
+      // identificar elementos del HTML
+      const numeros= document.querySelector('.numeros');
+      const resultadoOperacion= document.querySelector('.resultado-operacion');
+
+      //función para insertar números---------------
+      function insertarNumeros(){
+           // preguntamos por los dos números
+           num1 = prompt('inserta en primer número');
+           num2 = prompt('inserta en segundo número');
+
+           // insertar números en caja numeros
+           numeros.innerHTML=`Numeros de la operación: ${num1} y ${num2}`;
+
+           //vaciamos el resultado anterior:
+           resultadoOperacion.innerHTML="";
+      } //fin función
+
+      //función de calcular---------------
+      function calcular(dato1,dato2){ //los parámetros podrían llamarse num1 o num2 pero así queda más claro que son independientes de los parámetros de la función insertarNumeros
+       
+        var suma= Number(dato1)+ Number(dato2);
+        var resta= dato1-dato2;
+        var multiplicacion= dato1*dato2;
+        var division= dato1/dato2;
+
+        return{suma,resta,multiplicacion,division}; 
+       
+      }
+
+      //función para obtener calculo y mostrarlo ---------------
+      function operacion(tipoOperacion, simbolo){
+        var resultado=null; // variable local que solo existe dentro de la función.
+
+        //llamamos a función calcular y asignamos su valor a variable operaciones:
+        var operaciones = calcular(num1,num2);
+        
+        // obtenemos en la variable resultado el valor del return
+        resultado=  operaciones[tipoOperacion];
+
+        //mostramos el resultado de la operación:
+         resultadoOperacion.innerHTML=`${num1} ${simbolo} ${num2} es: ${resultado}`;
+
+      } //fin función
+      
+    </script>
+ 
+
+</body>
+    
+
+    
+</html>
