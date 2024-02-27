@@ -84,8 +84,8 @@
     <script>
 
       // variables
-      var num1=null; //será variable global para ser utilizada en varias funciones
-      var num2=null; //será variable global para ser utilizada en varias funciones
+      let num1=null; //será variable global para ser utilizada en varias funciones
+      let num2=null; //será variable global para ser utilizada en varias funciones
  
       // identificar elementos del HTML
       const numeros= document.querySelector('.numeros');
@@ -107,10 +107,10 @@
       //función de calcular---------------
       function calcular(dato1,dato2){ //los parámetros podrían llamarse num1 o num2 pero así queda más claro que son independientes de los parámetros de la función insertarNumeros
        
-        var suma= Number(dato1)+ Number(dato2);
-        var resta= dato1-dato2;
-        var multiplicacion= dato1*dato2;
-        var division= dato1/dato2;
+        let suma= Number(dato1)+ Number(dato2);
+        let resta= dato1-dato2;
+        let multiplicacion= dato1*dato2;
+        let division= dato1/dato2;
 
         return{suma,resta,multiplicacion,division}; 
        
@@ -121,7 +121,7 @@
         var resultado=null; // variable local que solo existe dentro de la función.
 
         //llamamos a función calcular y asignamos su valor a variable operaciones:
-        var operaciones = calcular(num1,num2);
+        let operaciones = calcular(num1,num2);
         
         // obtenemos en la variable resultado el valor del return
         resultado=  operaciones[tipoOperacion];
@@ -135,7 +135,5 @@
  
 
 </body>
-    
-
     
 </html>
