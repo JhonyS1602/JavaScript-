@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #caja-mensaje{
+            margin:20px;
+        }
+    </style>
+</head>
+<body>
+ 
+	<h1>Arhivo 04 de prueba para encontrar errores</h1>
+    
+    <button onclick="calcularVelocidad();">
+        Calcular velocidad
+    </button>
+
+    <div class="caja-mensaje"></div>
+	
+   <script>
+      // Este script pide la distancia y el tiempo que se ha tardado en recorrer para mostrar después la velocidad media.
+      // la función se ejecuta cuando se la llama desde un botón.
+
+      const cajaMensaje= document.querySelector('.caja-mensaje')
+ 
+      function calcularVelocidad () {
+          //pedir distancia recorrida en km
+          var espacio = prompt('Dime la distancia en KM que has recorrido');
+
+          //pedir tiempo en horas 
+          var tiempo = prompt('Dime el tiempo en horas que has tardado');
+
+          //calcular velocidad:
+          var velocidad = espacio / tiempo;
+
+          var datoFinalvelocidad= velocidad.toFixed(2);// El método nativo de Javascript llamado toFixed() limita los decimales´en función del dato insertado entre paréntesis. toFixed(2) lo limita a 2 decimales.
+
+          cajaMensaje.innerHTML=`Tu velocidad ha sido de ${datoFinalvelocidad} km por hora`;
+          
+      }
+     
+  </script>
+
+</body>
+</html>
+
